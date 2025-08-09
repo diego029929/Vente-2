@@ -1,530 +1,101 @@
-<!--
-Project: Site d'artisan - 10 pages
-Structure (fichiers inclus ci-dessous):
-- index.html
-- about.html
-- products.html
-- product-atelier.html
-- product-bougie.html
-- product-meuble.html
-- portfolio.html
-- services.html
-- contact.html
-- blog.html
-- /css/styles.css
-- /assets/ (images placeholders)
-
-Copiez chaque section dans des fichiers séparés dans un même dossier pour tester localement.
-Ouvrez index.html dans votre navigateur pour prévisualiser.
--->
-
-<!-- FILE: index.html -->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Atelier L'Artisan — Accueil</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Accueil - Boutique Exemple</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html">Atelier L'Artisan</a>
-      <nav class="nav">
-        <a href="about.html">À propos</a>
-        <a href="products.html">Produits</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="services.html">Services</a>
-        <a href="blog.html">Blog</a>
-        <a class="btn" href="contact.html">Contact</a>
-      </nav>
-      <button class="nav-toggle" aria-label="ouvrir le menu">☰</button>
-    </div>
+  <header>  
+    Boutique Exemple
   </header>
 
+  <nav>
+    <ul>
+      <li><a href="index.html" class="active">Accueil</a></li>
+      <li><a href="about.html">À propos</a></li>
+      <li><a href="reviews.html">Évaluations</a></li>
+      <li><a href="contact.html">Nous contacter</a></li>
+    </ul>
+  </nav>
+
   <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <h1>Objets faits main — Pensés pour durer</h1>
-          <p class="lead">Bois, cire, métal : chaque pièce est façonnée à la main dans notre atelier. Découvrez le savoir-faire, la durabilité et l'esthétique au service du quotidien.</p>
-          <p><a class="cta" href="products.html">Voir les produits</a></p>
-        </div>
-        <div class="hero-card">
-          <img src="assets/hero-placeholder.jpg" alt="Ouvrier en atelier" />
-        </div>
-      </div>
-    </section>
+    <h2>Nos produits</h2>
 
-    <section class="features container">
-      <article class="feature">
-        <h3>Pièces uniques</h3>
-        <p>Chaque création a sa propre histoire — finitions soignées et matériaux sélectionnés.</p>
-      </article>
-      <article class="feature">
-        <h3>Éco-responsable</h3>
-        <p>Bois certifié, cire naturelle et emballages recyclés.</p>
-      </article>
-      <article class="feature">
-        <h3>Sur mesure</h3>
-        <p>Personnalisation disponible sur commande — dimensions, couleur, gravure.</p>
-      </article>
-    </section>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Rechercher un produit..." />
+      <button onclick="searchProducts()">Rechercher</button>
+    </div>
 
-    <section class="preview container">
-      <h2>Nos coups de coeur</h2>
-      <div class="grid">
-        <article class="card">
-          <a href="product-atelier.html"><img src="assets/card1.jpg" alt="Atelier"></a>
-          <h4>Lampe Atelier</h4>
-          <p>Lampe en bois massif et abat-jour tissu — 120€</p>
-        </article>
-        <article class="card">
-          <a href="product-bougie.html"><img src="assets/card2.jpg" alt="Bougie"></a>
-          <h4>Bougie Naturelle</h4>
-          <p>Cire de soja, parfum léger — 18€</p>
-        </article>
-        <article class="card">
-          <a href="product-meuble.html"><img src="assets/card3.jpg" alt="Meuble"></a>
-          <h4>Table d'appoint</h4>
-          <p>Chêne massif, finition huile — dès 350€</p>
-        </article>
-      </div>
-    </section>
-
+    <div id="productList" class="product-list">
+      <!-- Produits insérés ici par JS -->
+    </div>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <strong>Atelier L'Artisan</strong>
-        <p>Rue de l'Atelier 12 — 75000 Paris</p>
-      </div>
-      <div>
-        <p>Suivez-nous</p>
-        <p class="socials">Instagram • Facebook • Pinterest</p>
-      </div>
-      <div>
-        <p>Horaires</p>
-        <p>Mar–Sam 10:00–18:00</p>
-      </div>
-    </div>
+  <footer>
+    &copy; 2025 Boutique Exemple
   </footer>
 
   <script>
-    // petit script pour menu mobile
-    const toggle = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('.nav');
-    toggle.addEventListener('click', () => nav.classList.toggle('open'));
+    const products = [
+      {id:1, title:"Casque Audio Premium", description:"Son immersif et design élégant", price:89, page:"product1.html"},
+      {id:2, title:"Montre Connectée X200", description:"Suivi santé et notifications", price:120, page:"product2.html"},
+      {id:3, title:"Sac à Dos Urbain", description:"Résistant et léger", price:75, page:"product3.html"},
+      {id:4, title:"Lampe de Bureau LED", description:"Éclairage doux et réglable", price:35, page:"product4.html"},
+      {id:5, title:"Chaise Ergonomique", description:"Confort optimal pour le bureau", price:150, page:"product5.html"},
+      {id:6, title:"Enceinte Bluetooth", description:"Son puissant et portable", price:65, page:"product6.html"},
+      {id:7, title:"Tapis de Yoga", description:"Antidérapant et confortable", price:40, page:"product7.html"},
+      {id:8, title:"Clavier Mécanique", description:"Réactivité et confort de frappe", price:95, page:"product8.html"},
+      {id:9, title:"Lunettes de Soleil", description:"Protection UV et style", price:55, page:"product9.html"},
+      {id:10, title:"Appareil Photo Compact", description:"Photos haute résolution", price:220, page:"product10.html"},
+      {id:11, title:"Baskets de Course", description:"Légères et résistantes", price:80, page:"product11.html"},
+      {id:12, title:"Drone Miniature", description:"Vidéo HD et facile à piloter", price:180, page:"product12.html"},
+      {id:13, title:"Montre Vintage", description:"Style classique et précision", price:130, page:"product13.html"},
+      {id:14, title:"Casque VR", description:"Immersion totale en réalité virtuelle", price:300, page:"product14.html"},
+      {id:15, title:"Chargeur Sans Fil", description:"Rapide et pratique", price:25, page:"product15.html"},
+      {id:16, title:"Batterie Externe", description:"Grande capacité pour vos appareils", price:45, page:"product16.html"},
+      {id:17, title:"Stylo Numérique", description:"Écriture naturelle sur tablette", price:60, page:"product17.html"},
+      {id:18, title:"Tablette Graphique", description:"Création artistique facilitée", price:250, page:"product18.html"},
+      {id:19, title:"Casque Audio Sport", description:"Résistant à la sueur", price:70, page:"product19.html"},
+      {id:20, title:"Webcam HD", description:"Vidéo nette et micro intégré", price:55, page:"product20.html"}
+    ];
+
+    const productListEl = document.getElementById('productList');
+    const searchInput = document.getElementById('searchInput');
+
+    function displayProducts(list) {
+      productListEl.innerHTML = '';
+      if(list.length === 0) {
+        productListEl.innerHTML = '<p>Aucun produit trouvé.</p>';
+        return;
+      }
+      list.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+          <a href="${p.page}" style="text-decoration:none; color:inherit;">
+            <img src="images/product${p.id}.jpg" alt="${p.title}" style="width:100%; height:150px; object-fit:contain; border-bottom: 2px solid #00509e; padding-bottom:10px; margin-bottom:15px;"/>
+            <h3>${p.title}</h3>
+            <p>${p.description}</p>
+            <p class="price">${p.price} €</p>
+          </a>
+        `;
+        productListEl.appendChild(card);
+      });
+    }
+
+    function searchProducts() {
+      const query = searchInput.value.trim().toLowerCase();
+      if(query === '') {
+        displayProducts(products);
+        return;
+      }
+      const filtered = products.filter(p => p.title.toLowerCase().includes(query) || p.description.toLowerCase().includes(query));
+      displayProducts(filtered);
+    }
+
+    displayProducts(products);
   </script>
-</body>
-</html>
-
-<!-- FILE: about.html -->
-<!doctype html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>À propos — Atelier L'Artisan</title>
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html">Atelier L'Artisan</a>
-      <nav class="nav">
-        <a href="index.html">Accueil</a>
-        <a href="products.html">Produits</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="services.html">Services</a>
-        <a href="blog.html">Blog</a>
-        <a class="btn" href="contact.html">Contact</a>
-      </nav>
-      <button class="nav-toggle" aria-label="ouvrir le menu">☰</button>
-    </div>
-  </header>
-
-  <main class="container">
-    <section class="about">
-      <h1>Notre histoire</h1>
-      <div class="about-grid">
-        <p>Fondé en 2015, l'Atelier L'Artisan rassemble des passionnés du travail manuel. Notre objectif : créer des objets utiles et beaux, pensés pour durer.</p>
-        <img src="assets/about.jpg" alt="Atelier intérieur">
-      </div>
-      <h2>Notre démarche</h2>
-      <p>Nous privilégions les circuits courts et le respect des matériaux. Chaque pièce est réalisée à la demande ou en petites séries.</p>
-    </section>
-  </main>
-
-  <footer class="site-footer small">
-    <div class="container">© Atelier L'Artisan — Tous droits réservés</div>
-  </footer>
-</body>
-</html>
-
-<!-- FILE: products.html -->
-<!doctype html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Produits — Atelier L'Artisan</title>
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html">Atelier L'Artisan</a>
-      <nav class="nav">
-        <a href="index.html">Accueil</a>
-        <a href="about.html">À propos</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="services.html">Services</a>
-        <a href="blog.html">Blog</a>
-        <a class="btn" href="contact.html">Contact</a>
-      </nav>
-      <button class="nav-toggle" aria-label="ouvrir le menu">☰</button>
-    </div>
-  </header>
-
-  <main class="container">
-    <h1>Catalogue</h1>
-    <p class="lead">Sélection — pièces disponibles et listes sur commande.</p>
-
-    <div class="grid">
-      <article class="card">
-        <a href="product-atelier.html"><img src="assets/card1.jpg" alt="Lampe atelier"></a>
-        <h4>Lampe Atelier</h4>
-        <p>Lampe en bois massif — 120€</p>
-      </article>
-      <article class="card">
-        <a href="product-bougie.html"><img src="assets/card2.jpg" alt="Bougie naturelle"></a>
-        <h4>Bougie Naturelle</h4>
-        <p>Cire végétale — 18€</p>
-      </article>
-      <article class="card">
-        <a href="product-meuble.html"><img src="assets/card3.jpg" alt="Table d'appoint"></a>
-        <h4>Table d'appoint</h4>
-        <p>Chêne massif — 350€</p>
-      </article>
-    </div>
-  </main>
-
-  <footer class="site-footer small">
-    <div class="container">© Atelier L'Artisan</div>
-  </footer>
-</body>
-</html>
-
-<!-- FILE: product-atelier.html -->
-<!doctype html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Lampe Atelier — Produit</title>
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html">Atelier L'Artisan</a>
-      <nav class="nav">
-        <a href="index.html">Accueil</a>
-        <a href="products.html">Produits</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-      <button class="nav-toggle" aria-label="ouvrir le menu">☰</button>
-    </div>
-  </header>
-
-  <main class="container product-page">
-    <div class="product-grid">
-      <img src="assets/card1.jpg" alt="Lampe Atelier">
-      <div>
-        <h1>Lampe Atelier</h1>
-        <p class="price">120€</p>
-        <p>Embellissez votre intérieur avec une lampe en bois massif, conçue et finie à la main. Abat-jour en tissu naturel. Possibilité de teinte sur demande.</p>
-        <ul>
-          <li>Dimensions : H40cm x Ø25cm</li>
-          <li>Matériaux : chêne, tissu lin</li>
-          <li>Délais : 2–3 semaines / sur mesure</li>
-        </ul>
-        <p><a class="btn" href="contact.html">Commander / Demander un devis</a></p>
-      </div>
-    </div>
-  </main>
-
-  <footer class="site-footer small">
-    <div class="container">© Atelier L'Artisan</div>
-  </footer>
-</body>
-</html>
-
-<!-- FILE: product-bougie.html -->
-<!doctype html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Bougie Naturelle — Produit</title>
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html">Atelier L'Artisan</a>
-      <nav class="nav">
-        <a href="index.html">Accueil</a>
-        <a href="products.html">Produits</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-      <button class="nav-toggle" aria-label="ouvrir le menu">☰</button>
-    </div>
-  </header>
-
-  <main class="container product-page">
-    <div class="product-grid">
-      <img src="assets/card2.jpg" alt="Bougie naturelle">
-      <div>
-        <h1>Bougie Naturelle</h1>
-        <p class="price">18€</p>
-        <p>Bougie coulée à la main, cire de soja, parfum léger (lavande / bois de santal). Pot en verre réutilisable.</p>
-        <ul>
-          <li>Durée : ~40 heures</li>
-          <li>Volume : 180 ml</li>
-          <li>Options : gravure du pot</li>
-        </ul>
-        <p><a class="btn" href="contact.html">Commander</a></p>
-      </div>
-    </div>
-  </main>
-
-  <footer class="site-footer small">
-    <div class="container">© Atelier L'Artisan</div>
-  </footer>
-</body>
-</html>
-
-<!-- FILE: product-meuble.html -->
-<!doctype html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Table d'appoint — Produit</title>
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html">Atelier L'Artisan</a>
-      <nav class="nav">
-        <a href="index.html">Accueil</a>
-        <a href="products.html">Produits</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-      <button class="nav-toggle" aria-label="ouvrir le menu">☰</button>
-    </div>
-  </header>
-
-  <main class="container product-page">
-    <div class="product-grid">
-      <img src="assets/card3.jpg" alt="Table d'appoint">
-      <div>
-        <h1>Table d'appoint</h1>
-        <p class="price">à partir de 350€</p>
-        <p>Table en chêne massif, assemblage traditionel. Sur-mesure possible : tailles et finitions.</p>
-        <ul>
-          <li>Livraison disponible</li>
-          <li>Finition : huile naturelle</li>
-          <li>Garantie : 2 ans</li>
-        </ul>
-        <p><a class="btn" href="contact.html">Demander un devis</a></p>
-      </div>
-    </div>
-  </main>
-
-  <footer class="site-footer small">
-    <div class="container">© Atelier L'Artisan</div>
-  </footer>
-</body>
-</html>
-
-<!-- FILE: portfolio.html -->
-<!doctype html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Portfolio — Atelier L'Artisan</title>
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html">Atelier L'Artisan</a>
-      <nav class="nav">
-        <a href="index.html">Accueil</a>
-        <a href="about.html">À propos</a>
-        <a href="products.html">Produits</a>
-        <a href="services.html">Services</a>
-        <a href="blog.html">Blog</a>
-        <a class="btn" href="contact.html">Contact</a>
-      </nav>
-      <button class="nav-toggle" aria-label="ouvrir le menu">☰</button>
-    </div>
-  </header>
-
-  <main class="container">
-    <h1>Portfolio</h1>
-    <p class="lead">Quelques réalisations — projets sur-mesure et commandes spéciales.</p>
-    <div class="masonry">
-      <img src="assets/portfolio1.jpg" alt="projet 1">
-      <img src="assets/portfolio2.jpg" alt="projet 2">
-      <img src="assets/portfolio3.jpg" alt="projet 3">
-      <img src="assets/portfolio4.jpg" alt="projet 4">
-    </div>
-  </main>
-
-  <footer class="site-footer small">
-    <div class="container">© Atelier L'Artisan</div>
-  </footer>
-</body>
-</html>
-
-<!-- FILE: services.html -->
-<!doctype html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Services — Atelier L'Artisan</title>
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html">Atelier L'Artisan</a>
-      <nav class="nav">
-        <a href="index.html">Accueil</a>
-        <a href="about.html">À propos</a>
-        <a href="products.html">Produits</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="blog.html">Blog</a>
-        <a class="btn" href="contact.html">Contact</a>
-      </nav>
-      <button class="nav-toggle" aria-label="ouvrir le menu">☰</button>
-    </div>
-  </header>
-
-  <main class="container">
-    <h1>Services</h1>
-    <ul class="services-list">
-      <li><strong>Sur-mesure</strong> — Conception et fabrication selon vos besoins.</li>
-      <li><strong>Restauration</strong> — Remise à neuf de meubles anciens.</li>
-      <li><strong>Ateliers</strong> — Sessions d'initiation au travail du bois et de la cire.</li>
-    </ul>
-  </main>
-
-  <footer class="site-footer small">
-    <div class="container">© Atelier L'Artisan</div>
-  </footer>
-</body>
-</html>
-
-<!-- FILE: contact.html -->
-<!doctype html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Contact — Atelier L'Artisan</title>
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html">Atelier L'Artisan</a>
-      <nav class="nav">
-        <a href="index.html">Accueil</a>
-        <a href="products.html">Produits</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="services.html">Services</a>
-      </nav>
-      <button class="nav-toggle" aria-label="ouvrir le menu">☰</button>
-    </div>
-  </header>
-
-  <main class="container contact-page">
-    <h1>Contact</h1>
-    <p>Pour commander, demander un devis ou visiter l'atelier, utilisez le formulaire ci-dessous ou écrivez-nous à <a href="mailto:contact@atelierartisan.example">contact@atelierartisan.example</a>.</p>
-
-    <form class="contact-form" action="#" method="post">
-      <label>Nom<input type="text" name="name" required></label>
-      <label>Email<input type="email" name="email" required></label>
-      <label>Message<textarea name="message" rows="6" required></textarea></label>
-      <button class="btn" type="submit">Envoyer</button>
-    </form>
-
-    <aside class="contact-info">
-      <h2>Visiter l'atelier</h2>
-      <p>Sur rendez-vous — Rue de l'Atelier 12, Paris</p>
-    </aside>
-  </main>
-
-  <footer class="site-footer small">
-    <div class="container">© Atelier L'Artisan</div>
-  </footer>
-</body>
-</html>
-
-<!-- FILE: blog.html -->
-<!doctype html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Blog — Atelier L'Artisan</title>
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html">Atelier L'Artisan</a>
-      <nav class="nav">
-        <a href="index.html">Accueil</a>
-        <a href="about.html">À propos</a>
-        <a href="products.html">Produits</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a class="btn" href="contact.html">Contact</a>
-      </nav>
-      <button class="nav-toggle" aria-label="ouvrir le menu">☰</button>
-    </div>
-  </header>
-
-  <main class="container">
-    <h1>Le journal de l'atelier</h1>
-    <div class="grid">
-      <article class="card">
-        <h3>Comment nous choisissons nos bois</h3>
-        <p class="muted">12 mai 2025</p>
-        <p>Brève explication du choix des essences et fournisseurs locaux.</p>
-        <p><a href="#">Lire la suite</a></p>
-      </article>
-      <article class="card">
-        <h3>Atelier découverte — photos</h3>
-        <p class="muted">02 avril 2025</p>
-        <p>Retour en images sur notre dernier atelier d'initiation.</p>
-        <p><a href="#">Lire la suite</a></p>
-      </article>
-    </div>
-  </main>
-
-  <footer class="site-footer small">
-    <div class="container">© Atelier L'Artisan</div>
-  </footer>
 </body>
 </html>
